@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- CDN Bootstrap CSS -->
+    <!-- https://fezvrasta.github.io/bootstrap-material-design/ -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+      integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+      integrity="sha256-zmfNZmXoNWBMemUOo1XUGFfc0ihGGLYdgtJS3KCr/l0="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"
+      integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/estilos.css" />
+    <title>WebApp</title>
+  </head>
+  <body>
+    <!-- modal -->
+    <div
+      class="modal fade"
+      id="modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modalTitulo"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitulo">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modalBody">
+            ...
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- contenido -->
+    <nav class="navbar navbar-dark bg-danger">
+      <a class="navbar-brand" href="#">Administración</a>
+    </nav>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="card col-12">
+          <div class="card-body">
+            <div class="titulo-carta">
+              <h5 class="card-title">
+                <i class="fas fa-user-graduate mr-2"></i>Alumnos
+              </h5>
+            </div>
+            <!-- <h6 class="card-subtitle">Listado de alumnos registrados</h6> -->
+
+            <ul class="nav nav-tabs">
+              <li class="nav-item active">
+                <a class="nav-link" href="#alumnos">Alumnos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#cursos">Cursos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#estadisticas">Estadisticas</a>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="alumnos" class="tab-pane fade in active">
+                <h3>Alumnos</h3>
+                <!-- Button trigger modal -->
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  data-toggle="modal"
+                  data-target="#modal"
+                  id="btnCrearAlumno"
+                >
+                  Crear Alumno
+                </button>
+                <div>
+                  <table class="table" id="contenidoAlumnos"></table>
+                </div>
+              </div>
+              <div id="cursos" class="tab-pane fade">
+                <h3>Cursos</h3>
+                <!-- Button trigger modal -->
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  data-toggle="modal"
+                  data-target="#modal"
+                  id="btnCrearCurso"
+                >
+                  Crear Curso
+                </button>
+                <div>
+                  <table class="table" id="contenidoCursos"></table>
+                </div>
+              </div>
+              <!-- AÑADIDO -->
+              <div id="estadisticas" class="tab-pane fade">
+                <h3>Estadisticas</h3>
+                <div>
+                  <canvas id="grafico"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CDN Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+      integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+      integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"
+      integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/Alumno.js"></script>
+    <script src="js/Curso.js"></script>
+    <script src="js/Comunicacion.js"></script>
+    <script src="js/Modal.js"></script>
+    <script src="js/Interface.js"></script>
+    <script src="js/App.js"></script>
+    <script src="js/estadisticas.js"></script>
+  </body>
+</html>
